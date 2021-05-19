@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta name="base template" content="home page">
+        <title>  {% block title %} HELP {% endblock %} </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        {% block style %}
+
+            <link rel="stylesheet" href="static/style/style.css">
+
+        {% endblock %}
+        <style>
+            body {
+                background-image: url("static/img/background.png");
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    {% endblock %}
+
+</head>
+
+
+<body id="back" onload="color1()">
+
+{% block navigationbar %}
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark  fixed-top">
+    <a class="navbar-brand" href="#">
+        <img src="static/img/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">About<span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    OUR SERVICES
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:orange">
+                    <a class="dropdown-item" href="/homeservice">Home</a>
+                    <a class="dropdown-item" href="#">Kids</a>
+                    <a class="dropdown-item" href="#">Buying & Delivery</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    OUR HELPERS
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:orange">
+                    <a class="dropdown-item" href="/icanhelp">Help Field</a>
+                    <a class="dropdown-item" href="/helpday">Help Day</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/weekly">Weekly Schedule</a>
+
+                </div>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    CONTACT US
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:orange">
+                    <a class="dropdown-item" href="#">Contact Us </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/sponsors">Sponsors</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    SIGN UP
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:orange">
+                    <a class="dropdown-item" href="/signup">Student </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Others</a>
+                </div>
+            </li>
+            <li>
+                <div style="padding-left: 3rem">
+                    <h5 style="color: lightcoral;position: center">Hi {{ username }}</h5>
+                </div>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <a href="/login">Login</a></button>
+        </form>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                <a href="/logout">logout</a></button>
+        </form>
+    </div>
+{% endblock %}
+</nav>
+<br/>
+<br/>
+<br/>
+<h1>{% block h1 %}HELP MONTREAL{% endblock %}</h1>
+
+<!-- body-->
+
+
+{% block content %}
+{% endblock %}
+{% block parag %}
+{% endblock %}
+{% block add %}
+{% endblock %}
+{% block action %}
+{% endblock %}
+
+
+
+{% block footer %}
+    <br/>
+
+    <div class="fixed-bottom">
+  <span class="d-block p-2 bg-dark text-white" STYLE="text-align: center">
+    Servie One Another &copy; SARAH SALIB
+  </span>
+    </div>
+{% endblock %}
+
+</body>
+
+</html>

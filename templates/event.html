@@ -1,0 +1,139 @@
+{% extends'home service.html' %}
+{% block title %}Home-Event Organizing {% endblock %}
+{% block style %}
+    {{ super() }}
+    <link rel='stylesheet' href='event%20verifictions.js' type='text/css'/>
+{% endblock %}
+{% block h1 %}Big Event is going to happen {% endblock %}
+{% block parag %}
+    <div style="float: right; padding:6rem; width: 100%; ">
+        <blockquote class="blockquote">
+            <p class="main" class="mb-0">
+                It really takes time to organize this kind of chaos,<br/>
+                so let us know more about your<br/><SPAN STYLE="color: orange"> EVENT</SPAN>
+            </p>
+        </blockquote>
+    </div>
+    <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>  <br/>
+
+{% endblock %}
+
+{% block add %}
+    {% if form.errors %}
+        <ul class="errors" style="padding-left:10rem;font-weight: bolder">
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li style="color: red">{{ form[field_name].label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="container " style="padding: 7rem; align-content: center;width: 100% ">
+        <form style="padding: 2%" action="/event" method="post" id="form">
+            {{ form.csrf_token }}
+            <div class=" form-row">
+                <div class="form-group col-md-6">
+                    <label>{{ form.occasion.label }}</label>
+                    {{ form.occasion (class="hidden selected disabled" ,class="form-control") }}
+
+                </div>
+                <div class="form-group col-md-3">
+                    <label>{{ form.date.label }}</label>
+                    {{ form.date(class="form-control",placeholder="YYYY-MM-DD", id="event") }}
+                </div>
+                <div class="form-group col-md-3">
+                    <label>{{ form.time.label }}</label>
+                    {{ form.time(class="form-control", placeholder="17:00",id="time1") }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>{{ form.address.label }}</label>
+                    {{ form.address(class="form-control",placeholder="1234 Main St") }}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputCity">{{ form.city.label }}</label>
+                    {{ form.city (class="form-control") }}
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">{{ form.postal.label }}</label>
+                    {{ form.postal(class="form-control") }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>{{ form.info.label }} </label>
+                    {{ form.info(class="form-control") }}
+                </div>
+                <div class="form-group col-md-6">
+                    <label>{{ form.duty.label }}</label>
+                    {{ form.duty(class="form-control", id="dura") }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>{{ form.duration.label }}</label>
+                    {{ form.duration(class="form-control", placeholder="2",id="dura") }}
+                </div>
+                <div class="form-group col-md-4">
+                    <label>{{ form.start.label }}</label>
+                    {{ form.start(class="form-control", placeholder="13:00", id="time2") }}
+                </div>
+                <div class="form-group col-md-4">
+                    <label>{{ form.end.label }}</label>
+                    {{ form.end(class="form-control", placeholder="15:00", id="time3") }}
+                </div>
+            </div>
+            <div>
+                {{ form.submit( class="btn btn-primary", onclick="validdate()") }}
+            </div>
+        </form>
+    </div>
+    <script>
+        function validdate() {
+            var bool = false;
+
+            while (!bool) {
+                var date1 = document.getElementById('event')
+                var check_D = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/
+                if (!date1.value.match(check_D)) {
+                    alert("Invalid date")
+                    bool = false;
+                    break;
+                } else {
+                    bool = true
+                }
+
+                var check_T = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
+                var Time1 = document.getElementById('time1')
+                var Time2 = document.getElementById('time2')
+                var Time3 = document.getElementById('time3')
+
+                if (!Time1.value.match(check_T)) {
+                    alert("Invalid Event Time")
+                    bool = false;
+                    break;
+                } else {
+                    bool = true
+                }
+                if (!Time2.value.match(check_T)) {
+                    alert("Invalid Start Time")
+                    bool = false;
+                    break;
+                } else {
+                    bool = true
+                }
+                if (!Time3.value.match(check_T)) {
+                    alert("Invalid End Time")
+                    bool = false;
+                    break;
+                } else {
+                    bool = true
+                }
+
+            }
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,220 @@
+{% extends 'base template.html' %}
+{% block title %}
+    Our Sponsors
+{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %} Our Sponsors {% endblock %}
+{% block content %}
+    <div class="row" style="padding-left: 7%;padding-top: 7%">
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://www.concordia.ca/">
+                    <img src="/static/img/concordia.jpg" alt="Concordia University" style="width:90%">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://uqam.ca/">
+                    <img src="static/img/uqm.jpg" alt="UQAM" style="width:90%">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://www.etsmtl.ca/en/ETS">
+                    <img src="static/img/ETS.jpg" alt="ETS" style="width:90%">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-left: 7%;padding-top: 7%">
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://www.mcgill.ca/">
+                    <img src="static/img/mcgill.jpg" alt="McGill" style="width:90%">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://www.polymtl.ca/">
+                    <img src="static/img/Polytech.jpg" alt="PolyTechique" style="width:90%">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4" style="padding: 2%">
+            <div class="thumbnail">
+                <a href="https://www.umontreal.ca/en/">
+                    <img src="static/img/university%20of%20Montreal.jpg" alt="U Montreal" style="width:90%">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 7%; ">
+        <p class="main">
+            All the Students work with us are so thankful to Our Sponsors for their academic and social support </p>
+    </div>
+
+    <div class="row" style="padding:0 7%; width: 100%">
+        <p style="font-size: 24px; text-shadow: 1px 1px grey; font-family: 'Berlin Sans FB';text-align: center; text-decoration: underline">
+            If you would like to be part of students success in their academic and social life,please fill up the form
+            below and we contact you soon </p>
+    </div>
+{% endblock %}
+{% block action %}
+    {% if form.errors %}
+        <ul class="errors" style="padding-left:10rem;font-weight: bolder">
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li style="color: red">{{ form[field_name].label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div style="background-color: #FFC7B9 ">
+        <form style="width: 70%; padding: 7%" name="sponsors" id="form1" action="/sponsors" method="post">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label>{{ form.name.label }}</label>
+                {{ form.name (class="form-control", id="nameid1") }}
+
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.field.label }}</label>
+                {{ form.field (class="form-control", id="fieldid") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.email.label }}</label>
+                {{ form.email (class="form-control", id="emailid") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.phone.label }}</label>
+                {{ form.phone (class="form-control", id="COOL") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.address.label }}</label>
+                {{ form.address (class="form-control", id="addressid") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.why.label }}</label>
+                {{ form.why (class="form-control", id="messageid") }}
+            </div>
+            <div>
+                {{ form.submit (class="btn btn-primary" , onclick="valid()") }}
+            </div>
+        </form>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    <script>
+        function valid() {
+            var bool = false
+            while (!bool) {
+                var name_s = document.getElementById('nameid1');
+                if (name_s.value.length < 3) {
+                    alert("Institution name is empty or too short");
+                    bool = false;
+                    break;
+                    name_s.focus();
+                } else {
+                    bool = true;
+                }
+
+
+                var field = document.getElementById('fieldid');
+                var check_f = /^[a-zA-Z\s]*$/;
+                if (field.value.length < 3) {
+                    alert("Business field is empty or less than three letters");
+                    bool = false;
+                    break;
+                    field.focus();
+
+                } else {
+                    if (!field.value.match(check_f)) {
+                        alert("Business field should contain letters only")
+                        bool = false;
+                        break;
+                        field.focus();
+                    } else {
+                        bool = true;
+                    }
+                }
+
+
+                var email = document.getElementById('emailid');
+                var check_e = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+                if (email.value.length === 0) {
+                    alert("Please Enter your Email");
+                    bool = false;
+                    break;
+                    email.focus();
+                } else {
+                    if (!email.value.match(check_e)) {
+                        alert("Invalid email");
+                        bool = false;
+                        break;
+                        email.focus();
+                    } else {
+                        bool = true;
+                    }
+                }
+
+
+                var phoneID = document.getElementById('COOL');
+                var check_p = /^\(?[\d]{3}\)?[\s-]?[\d]{3}[\s-]?[\d]{4}$/;
+                if (phoneID.value == "") {
+                    alert("your for phone number is empty");
+                    boo = false;
+                    break;
+                    phoneID.focus();
+                } else {
+                    if (!phoneID.value.match(check_p)) {
+                        alert("what you entered is not a valid phone number");
+                        bool = false;
+                        break;
+                        phoneID.focus();
+                    } else {
+                        bool = true;
+                    }
+                }
+
+
+                var address = document.getElementById('addressid');
+                if (address.value == "") {
+                    alert("Please enter your address");
+                    bool = false;
+                    break;
+                    address.focus();
+                } else {
+                    bool = true;
+                }
+
+
+                var message = document.getElementById('messageid');
+                if (message.value.length < 20) {
+                    alert("Please tell us the reason why you want to be part of our sponsors in more details");
+                    bool = false
+                    break;
+                    message.focus();
+                } else {
+                    bool = true;
+                }
+            }
+           /* if (bool == true) {
+                alert("your request has been submitted successfully ")
+                location.href='templates/sponsers message.html'
+            }*/
+
+        }
+    </script>
+
+{% endblock %}

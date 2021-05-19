@@ -1,0 +1,47 @@
+{% extends "base template.html" %}
+{% block title  %}I need help {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %}HELP ME !!{% endblock %}
+
+{% block content %}
+{% endblock %}
+{% block parag  %}
+    <div style="padding-left: 7rem">
+        <blockquote class="blockquote">
+            <p class="main" class="mb-0" >We are ready to help you in anything you want, but please tell us in which field </p>
+        </blockquote>
+    </div>
+{% endblock %}
+
+{% block action %}
+<div class="container col-md-8" style="float: left;padding:5% 7%">
+{% block home %}
+        <a href="/homeservice">
+            <img src="static/img/home.jpg" alt="event" class="image" style="width:100%;">
+            <div class="middle">
+                <div class="text">HOME</div>
+            </div>
+         </a>
+     </div>
+    {% endblock %}
+
+    <div class="container col-md-8" style="float: right;padding:5% 7%">
+        <a href="#">
+            <img src="static/img/kids.jpg" alt="event" class="image" style="width:100%; ">
+            <div class="middle">
+                <div class="text">KIDS</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="container col-md-8" style="float: left;padding:5% 7%" >
+        <a href="#">
+            <img src="static/img/buying&Delivery.jpg" alt="event" class="image" style="width:100%; ">
+            <div class="middle">
+                <div class="text">BUYING & DELIVERY</div>
+            </div>
+        </a>
+    </div>
+{% endblock %}

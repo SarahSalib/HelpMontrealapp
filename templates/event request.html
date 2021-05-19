@@ -1,0 +1,41 @@
+{% extends'I can help.html' %}
+{% block title %}
+    Home help requests
+{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %} Home help request {% endblock %}
+{% block parag %}
+    <div style="float: right; padding:7rem; width: 100%;">
+        <blockquote class="blockquote">
+            <p class="main" class="mb-0">Woohoo... that is so great, we are thankful in advance for your help </p>
+            <p class="main" class="mb-0" style="color: coral"> You know that a lot of people need help at home </p>
+        </blockquote>
+    </div>
+{% endblock %}
+{% block action %}
+    <br/>
+    <br/>
+    <br/>
+    <div class="container " style="width: 100%;padding: 7rem; " class="zoom">
+        {% for tags in all %}
+            <ul class="list-group list-group-flush" style="width: 60%"
+                onmouseover="this.style.width='100%'; this.style.fontSize='24px'"
+                onmouseout="this.style.width='60%'; this.style.fontSize='16px'">
+                <h3>Event</h3>
+                {% for info in tags %}
+                    <li class="list-group-item"><strong>{{ info[0] }}</strong> : {{ info[1] }} </li>
+                {% endfor %}
+                <br/>
+                <div class="form-group col-md-12">
+                    <a href="mailto:{{ tags[1][1] }}" >
+                        <button type="submit" class="btn btn-secondary"> Contact</button>
+                    </a>
+                </div>
+            </ul>
+            <br/>
+            <br/>
+        {% endfor %}
+    </div>
+{% endblock %}

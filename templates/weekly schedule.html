@@ -1,0 +1,143 @@
+{% extends "base template.html" %}
+{% block title %}OUR HELPERS- Weekly Schedule{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    .content {
+     width: 420px;
+     margin-top: 100px
+ }
+
+ .ratings {
+     background-color: #fff;
+     padding: 54px;
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     box-shadow: 0px 10px 10px #E0E0E0
+ }
+
+ .product-rating {
+     font-size: 50px
+ }
+
+ .stars i {
+     font-size: 18px;
+     color: #28a745
+ }
+
+ .rating-text {
+     margin-top: 10px
+ }
+</style>
+{% endblock %}
+{% block h1 %}HELPERS WEEKLY SCHEDULE {% endblock %}
+
+
+{% block parag %}
+    <div style="float: right; padding: 7rem; width: 100%; text-align: center">
+        <blockquote class="blockquote">
+            <p class="mb-0" style="font-family: 'Berlin Sans FB'; font-size: 24px;">
+                Here you can check your favorite student available time and ask him to help you in whatever you want
+                <br/>
+                Still he has the chance to not be able to help you, so do not be upset if that happened.
+            </p>
+        </blockquote>
+    </div>
+{% endblock %}
+
+{% block add %}
+    <br/>
+    <br/>
+    <div class="table-responsive-sm" style="padding:7rem;">
+        <table class="table table-bordered" style="background: white; text-align: center;width: 60%; "
+               id="table1">
+            {% for data in schedule[:1] %}
+                <tr>
+                    {% for info in data[:1] %}
+                        <td style="text-align: center" scope="col" colspan="3">Student Name: {{ info }}</td>
+                    {% endfor %}
+                    <td style="text-align: center" colspan="2" rowspan="4"><img src="static/img/student.jpg"
+                                                                                alt="Student Picture" title="Student"
+                                                                                width="50%">
+                    </td>
+                </tr>
+            {% endfor %}
+            {% for data in schedule[1:2] %}
+                <tr>
+                    {% for info in data[:1] %}
+                        <td colspan="3">University: {{ info }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for data in schedule[2:3] %}
+                <tr>
+                    {% for info in data[:1] %}
+                        <td colspan="3">LinkedIn profile: <a href={{ info }} target="_blank">
+                            {{ info }}</a></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for data in schedule[3:4] %}
+                <tr>
+                    {% for info in data[:1] %}
+                        <td colspan="3">email: <a href="mailto:{{ info }}.ca" target="_blank">
+                            {{ info }} </a></td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+            {% for doc in schedule[4:5] %}
+                <tr>
+                    {% for time in doc %}
+                        <th width="100px" style="background: coral">{{ time }}</th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+          <div class="d-flex justify-content-center" style="float: right">
+                <div class="content text-center">
+                    <div class="ratings"><span class="product-rating">4.6</span><span>/5</span>
+                        <div class="stars"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                        <div class="rating-text"><span>46 ratings & 15 reviews</span></div>
+                    </div>
+                </div>
+              <br/><br/><br/><br/>
+            </div>
+
+            {% for doc in schedule[5:] %}
+                <tr>
+                    {% for col in doc[:1] %}
+                        <th width="100px" style="background: coral">{{ col }}</th>
+                    {% endfor %}
+                    {% for col in doc[1:] %}
+                        <td style="background-color:#2d2e33;color: white" id="yes"
+                            onmouseover=" this.style.color = 'coral'; this.style.fontSize='24px'"
+                            onmouseout="this.style.color = 'white'; this.style.fontSize='16px'"> {{ col }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+        </table>
+        <br/>
+        <button type="button" class="btn btn-primary btn-lg" id="cool">Contact
+        </button>
+    </div>
+
+
+    <div style="float: right;padding-left: 7rem; padding-right: 7rem; width: 100%; text-align: center; padding-top: 7rem">
+        <blockquote class="blockquote">
+            <p class="mb-0" style="font-family: 'Berlin Sans FB'; font-size: 24px;">
+                If you are one of our helper Students and want ot set your schedule click on the bellow button
+            </p>
+        </blockquote>
+    </div>
+    <div style="padding-left: 12rem; padding-right: 12rem">
+        <a href="#">
+            <button type="button" class="btn btn-warning btn-lg btn-block" id="cool1"
+                    style="height: 5rem;font-weight: bolder;visibility: visible">Set Schedule
+            </button>
+        </a>
+        <br/>
+        <br/>
+    </div>
+
+{% endblock %}

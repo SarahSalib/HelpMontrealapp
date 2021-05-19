@@ -1,0 +1,71 @@
+{% extends "base template.html" %}
+{% block title  %}OUR Services-home {% endblock %}
+{% block style %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %}HELP AT HOME {% endblock %}
+
+
+{% block parag  %}
+    <div style=" padding-left:7rem;padding-right: 7rem;padding-top: 7rem; width: 100%;text-align: center">
+        <blockquote class="blockquote">
+            <p class="mb-0" style="font-family: 'Berlin Sans FB'; font-size: 24px; text-align: center">
+            We know that time is limited and does not give a chance to do everything we want; therefore, asking the help of others is common.
+            <br/>
+            So, Please ask for our help in anything and be sure there is a student who will be more than happy to help you.
+            <br/>
+            </p>
+        </blockquote>
+    </div>
+<br/>
+<br/>
+    <div style="padding-left: 7rem; padding-right: 7rem">
+        <blockquote class="blockquote">
+            <p class="main" class="mb-0" >Please tell us, What can we do to help you at home ?</p>
+        </blockquote>
+    </div>
+{% endblock %}
+{% block add %}
+    <div></div>
+{% endblock %}
+
+{% block action %}
+
+     <div class="container col-md-6" style="float: left;padding:5% 7%">
+        <a href="/event">
+            <img src="static/img/event.jpg" alt="event" class="image" style="width:100%;">
+            <div class="middle">
+                <div class="text">Event Organizing</div>
+            </div>
+         </a>
+     </div>
+
+    <div class="container col-md-6" style="float: right;padding:5% 7%">
+        <a href="#">
+            <img src="static/img/cleaning.jpg" alt="event" class="image" style="width:100%; ">
+            <div class="middle">
+                <div class="text">Cleaning</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="container col-md-6" style="float: right;padding:5% 7%" >
+        <a href="#">
+            <img src="static/img/cooking.jpg" alt="event" class="image" style="width:100%; ">
+            <div class="middle">
+                <div class="text">Cooking</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="container col-md-6" style="float: left; padding:5% 7%" >
+        <a href="#">
+            <img src="static/img/gardening.jpg" alt="event" class="image" style="width:100%; ">
+            <div class="middle">
+                <div class="text">Gardening</div>
+            </div>
+        </a>
+    </div>
+
+{% endblock %}
+

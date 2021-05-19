@@ -1,0 +1,85 @@
+{% extends'base template.html' %}
+{% block head %}{{ super() }}
+    <link href="static/style/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="static/style/style%20login.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+{% endblock %}
+{% block title %}login {% endblock %}
+
+{% block h1 %} <h1 style="font-size:72px;text-shadow: 2px 2px grey ">Login</h1> {% endblock %}
+{% block content %}
+<div style="font-size: 24px; color: orange; padding-left: 7rem; font-weight: bolder">
+        {% for message in get_flashed_messages() %}
+            {{ message }}<br/>
+        {% endfor %}
+    </div>
+    {% if form.errors %}
+        <ul class="errors" style="padding-left:10rem;font-weight: bolder">
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li style="color: red">{{ form[field_name].label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div>
+        <!-- Outer Row -->
+        <div class="row justify-content-center" style="font-size: large">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <img src="static/img/register%20-%20Copy.jpg"
+                                     style="align-content: center; width: 100%">
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h3 style="font-size:52px; text-shadow: 1px 1px black">Welcome Back!</h3>
+                                    </div>
+                                    <form class="user" action="/login" method="post">
+                                        {{ form.csrf_token }}
+
+                                        <div class="form-group">
+                                            {{ form.email(class="form-control form-control-user", placeholder="Enter Email Address...") }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form.password(class="form-control form-control-user", placeholder="Password") }}
+                                        </div>
+                                        <div>
+                                            {{ form.login (class="btn btn-warning btn-user btn-block" ) }}
+                                        </div>
+
+                                        <hr>
+                                        <a href="#" class="btn btn-google btn-user btn-block">
+                                            Login with Google
+                                        </a>
+                                        <a href="#" class="btn btn-facebook btn-user btn-block">
+                                            Login with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="/forget">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="/signup">Create an Account! (AS STUDENT)</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="#">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
